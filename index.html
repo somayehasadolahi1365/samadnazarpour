@@ -2,129 +2,155 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مطب دکتر صمد نظرپور</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نوبت دکتر صمد نظرپور</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background:#f5f8fc;
-    margin:0;
-    padding:20px;
-    color:#17324d;
+body{
+font-family:Tahoma,Arial,sans-serif;
+background:#f3f8fa;
+padding:20px;
+margin:0;
 }
-.container {
-    max-width:500px;
-    margin:auto;
+.box{
+max-width:500px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:18px;
+box-shadow:0 3px 15px rgba(0,0,0,.08);
 }
-.card {
-    background:white;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:15px;
-    box-shadow:0 3px 15px rgba(0,0,0,.08);
+h2{
+text-align:center;
+color:#176b87;
 }
-h1 {
-    font-size:22px;
-    margin-bottom:5px;
+.doctor{
+text-align:center;
+color:#555;
+margin-bottom:20px;
+line-height:1.8;
 }
-.subtitle {
-    color:#64748b;
-    margin-bottom:20px;
+label{
+display:block;
+margin-top:12px;
+margin-bottom:5px;
+font-weight:bold;
 }
-label {
-    display:block;
-    margin-top:14px;
-    margin-bottom:6px;
-    font-weight:bold;
+input,select{
+width:100%;
+box-sizing:border-box;
+padding:11px;
+border:1px solid #ccc;
+border-radius:9px;
+font-size:15px;
 }
-input, select {
-    width:100%;
-    box-sizing:border-box;
-    padding:12px;
-    border:1px solid #d6dde7;
-    border-radius:10px;
-    font-size:15px;
+button{
+width:100%;
+margin-top:20px;
+padding:13px;
+border:0;
+border-radius:10px;
+background:#176b87;
+color:white;
+font-size:17px;
 }
-button {
-    width:100%;
-    padding:14px;
-    border:0;
-    border-radius:12px;
-    background:#1976d2;
-    color:white;
-    font-size:16px;
-    margin-top:18px;
+button:disabled{
+background:#999;
 }
-.info {
-    background:#eef6ff;
-    padding:12px;
-    border-radius:10px;
-    line-height:1.8;
+.info{
+margin-top:15px;
+padding:12px;
+background:#eef7fa;
+border-radius:9px;
+}
+#msg{
+text-align:center;
+margin-top:15px;
+line-height:1.8;
+}
+.ok{
+color:green;
+}
+.err{
+color:#c62828;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="box">
 
-<div class="card">
-<h1>مطب دکتر صمد نظرپور</h1>
-<div class="subtitle">فوق تخصص روماتولوژی</div>
+<h2>دریافت نوبت</h2>
 
-<div class="info">
-📍 خرم‌آباد، میدان کیو<br>
-طبقه بالای داروخانه موسوی‌نیا<br>
-💰 حق ویزیت: ۶٬۰۰۰٬۰۰۰ ریال
-</div>
+<div class="doctor">
+دکتر صمد نظرپور<br>
+فوق تخصص روماتولوژی
 </div>
 
-<div class="card">
-
-<label>انتخاب روز</label>
-<select>
+<label>روز مراجعه</label>
+<select id="day">
+<option value="">انتخاب کنید</option>
 <option>شنبه</option>
 <option>یکشنبه</option>
 <option>دوشنبه</option>
 <option>چهارشنبه</option>
 </select>
 
-<label>انتخاب ساعت</label>
-<select>
-<option>۱۲:۰۰</option>
-<option>۱۳:۰۰</option>
-<option>۱۴:۰۰</option>
-<option>۱۵:۰۰</option>
-<option>۱۶:۰۰</option>
-<option>۱۷:۰۰</option>
-<option>۱۸:۰۰</option>
-<option>۱۹:۰۰</option>
-<option>۲۰:۰۰</option>
+<label>ساعت مراجعه</label>
+<select id="time">
+<option value="">انتخاب کنید</option>
+<option>12:00</option>
+<option>13:00</option>
+<option>14:00</option>
+<option>15:00</option>
+<option>16:00</option>
+<option>17:00</option>
+<option>18:00</option>
+<option>19:00</option>
+<option>20:00</option>
+<option>21:00</option>
 </select>
 
 <label>نام و نام خانوادگی</label>
-<input type="text" placeholder="نام بیمار">
+<input id="name" type="text">
 
 <label>کد ملی</label>
-<input type="text" inputmode="numeric" placeholder="کد ملی">
+<input id="national" type="text" maxlength="10" inputmode="numeric">
 
 <label>شماره موبایل</label>
-<input type="tel" placeholder="09xxxxxxxxx">
+<input id="mobile" type="tel" inputmode="tel">
 
 <label>نوع بیمه</label>
-<select>
+<select id="insurance">
+<option value="">انتخاب کنید</option>
 <option>نیروهای مسلح</option>
 <option>تأمین اجتماعی</option>
 <option>بیمه سلامت</option>
 <option>آزاد</option>
 </select>
 
-<button>ثبت نوبت و پرداخت</button>
+<div class="info">
+مبلغ ویزیت: <b>۶٬۰۰۰٬۰۰۰ ریال</b>
+</div>
+
+<button id="btn" onclick="saveAppointment()">
+ثبت نوبت
+</button>
+
+<div id="msg"></div>
 
 </div>
 
-</div>
+<script>
 
-</body>
-</html>
+const URL="https://iirixdfzcwfjkvipmtez.supabase.co";
+
+const KEY="sb_publishable_KqpwUSUUjQlDUBPsLKF_Iw_xRKzDM_U";
+
+
+async function saveAppointment(){
+
+const day=document.getElementById("day").value;
+const time=document.getElementById("time").value;
+const name=document.getElementById("
